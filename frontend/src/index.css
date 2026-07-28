@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ink-950 text-slate-100 font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-ink-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink-700 rounded-full border-2 border-ink-900;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-steel-600;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-steel-500/40 text-white;
+  }
+}
+
+@layer components {
+  /* Glassmorphism surface */
+  .glass {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.06];
+  }
+
+  .glass-strong {
+    @apply bg-white/[0.05] backdrop-blur-2xl border border-white/[0.08];
+  }
+
+  /* Metallic gradient text */
+  .text-metallic {
+    background: linear-gradient(
+      135deg,
+      #e2e8f0 0%,
+      #94a3b8 40%,
+      #3b82f6 70%,
+      #1e40af 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Premium button base */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-xl
+      bg-gradient-to-b from-steel-500 to-steel-700 px-5 py-2.5 text-sm font-semibold
+      text-white shadow-lg shadow-steel-900/40 transition-all duration-200
+      hover:from-steel-400 hover:to-steel-600 hover:shadow-steel-800/50
+      active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40
+      disabled:hover:from-steel-500 disabled:hover:to-steel-700;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border
+      border-white/10 bg-white/5 px-5 py-2.5 text-sm font-semibold text-slate-200
+      transition-all duration-200 hover:border-white/20 hover:bg-white/10
+      active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl
+      bg-gradient-to-b from-rose-500 to-rose-700 px-5 py-2.5 text-sm font-semibold
+      text-white shadow-lg shadow-rose-900/40 transition-all duration-200
+      hover:from-rose-400 hover:to-rose-600 active:scale-[0.98]
+      disabled:cursor-not-allowed disabled:opacity-40;
+  }
+
+  /* Form input */
+  .form-input {
+    @apply w-full rounded-xl border border-white/10 bg-ink-900/60 px-4 py-3
+      text-sm text-white placeholder-slate-500 transition-all duration-200
+      focus:border-steel-500 focus:outline-none focus:ring-2 focus:ring-steel-500/20
+      disabled:opacity-50;
+  }
+
+  .form-label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-slate-400;
+  }
+
+  /* Chip */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5
+      text-xs font-semibold transition-all duration-200 active:scale-95;
+  }
+
+  .chip-inactive {
+    @apply border-white/10 bg-white/5 text-slate-400 hover:border-white/20 hover:text-slate-200;
+  }
+
+  .chip-active {
+    @apply border-steel-400/60 bg-steel-500/20 text-steel-200 shadow-sm shadow-steel-500/20;
+  }
+}
+
+@layer utilities {
+  /* Shimmer animation for skeletons */
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+  .skeleton {
+    @apply rounded-lg;
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.03) 0%,
+      rgba(255, 255, 255, 0.07) 50%,
+      rgba(255, 255, 255, 0.03) 100%
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 1.8s infinite linear;
+  }
+
+  /* Fade-in entrance */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out both;
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .animate-scale-in {
+    animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Slide in from right (toasts) */
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  .animate-slide-in-right {
+    animation: slideInRight 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Subtle pulse for live indicators */
+  @keyframes softPulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+  .animate-soft-pulse {
+    animation: softPulse 2s ease-in-out infinite;
+  }
+
+  .bg-grid {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-radial-glow {
+    background: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      rgba(59, 130, 246, 0.12),
+      transparent 70%
+    );
+  }
+}
