@@ -9,4 +9,7 @@ export default {
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1',
   },
+  // Add these to prevent the error
+  roots: ['<rootDir>/src'],
+  moduleDirectories: ['node_modules', 'src'],
 };
