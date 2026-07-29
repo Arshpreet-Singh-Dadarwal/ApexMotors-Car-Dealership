@@ -8,10 +8,12 @@ const TEST_DB_URI = process.env.MONGODB_URI_TEST || 'mongodb://localhost:27017/d
 
 beforeAll(async () => {
   try {
-    await mongoose.connect(TEST_DB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    if (mongoose.connection.readyState === 0) {
+      await mongoose.connect(TEST_DB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+    }
     console.log('Test database connected');
   } catch (error) {
     console.error('Test database connection error:', error);
@@ -20,10 +22,11 @@ beforeAll(async () => {
 
 afterAll(async () => {
   try {
-    // Drop test database and close connection
-    await mongoose.connection.dropDatabase();
-    await mongoose.connection.close();
-    console.log('Test database closed');
+    if (mongoose.connection.readyState !== 0) {
+      await mongoose.connection.dropDatabase();
+      await mongoose.connection.close();
+      console.log('Test database closed');
+    }
   } catch (error) {
     console.error('Error closing test database:', error);
   }
@@ -31,10 +34,11 @@ afterAll(async () => {
 
 afterEach(async () => {
   try {
-    // Clear all collections after each test
-    const collections = mongoose.connection.collections;
-    for (const key in collections) {
-      await collections[key].deleteMany({});
+    if (mongoose.connection.readyState !== 0) {
+      const collections = mongoose.connection.collections;
+      for (const key in collections) {
+        await collections[key].deleteMany({});
+      }
     }
   } catch (error) {
     console.error('Error clearing collections:', error);

@@ -11,7 +11,7 @@ dotenv.config();
 
 // Connect to MongoDB (skip for tests)
 if (process.env.NODE_ENV !== 'test') {
-  await connectDB();
+   await connectDB();
 }
 const app = express();
 const PORT = process.env.PORT || 5000;

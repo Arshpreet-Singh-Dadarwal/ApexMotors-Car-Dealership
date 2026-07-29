@@ -2,14 +2,14 @@
   "name": "dealership-backend",
   "version": "1.0.0",
   "description": "Node.js backend for dealership inventory with MongoDB",
-  "main": "src/server.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
     "seed": "node src/scripts/seed.js",
-   "test": "cross-env NODE_ENV=test jest --config jest.config.json --coverage",
-    "test:watch": "cross-env NODE_ENV=test jest --config jest.config.json --watch"
+    "test": "cross-env NODE_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --coverage",
+    "test:watch": "cross-env NODE_ENV=test node --experimental-vm-modules node_modules/jest/bin/jest.js --watch --config jest.config.json"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -21,14 +21,11 @@
     "mongoose": "^7.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/preset-env": "^7.29.7",
-    "@types/jest": "^29.5.5",
-    "@types/supertest": "^2.0.12",
-    "babel-jest": "^30.4.1",
     "cross-env": "^10.1.0",
-    "jest": "^25.0.0",
-    "nodemon": "^3.1.14",
-    "supertest": "^6.3.3"
+  "jest": "^29.7.0",
+  "supertest": "^6.3.3",
+  "nodemon": "^3.1.14",
+  "@types/jest": "^29.5.5",
+  "@types/supertest": "^2.0.12"
   }
 }
