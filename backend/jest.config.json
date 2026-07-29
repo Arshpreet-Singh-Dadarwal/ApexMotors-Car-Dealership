@@ -1,0 +1,10 @@
+{
+  "testEnvironment": "node",
+  "testMatch": ["**/__tests__/**/*.test.js"],
+  "collectCoverage": true,
+  "coverageDirectory": "coverage",
+  "coveragePathIgnorePatterns": ["/node_modules/", "/dist/"],
+  "coverageReporters": ["text", "lcov", "html"],
+  "roots": ["<rootDir>/src"],
+  "moduleDirectories": ["node_modules", "src"]
+}
