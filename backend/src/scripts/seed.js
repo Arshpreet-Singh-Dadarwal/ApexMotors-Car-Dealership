@@ -234,20 +234,7 @@ const dummyVehicles = [
 ];
 
 // Dummy users
-const dummyUsers = [
-  {
-    email: 'admin@apexmotors.com',
-    password: 'admin123',
-    fullName: 'John Admin',
-    role: 'admin'
-  },
-  {
-    email: 'user@apexmotors.com',
-    password: 'user123',
-    fullName: 'Jane Customer',
-    role: 'user'
-  }
-];
+
 
 const seedDatabase = async () => {
   try {
@@ -261,23 +248,17 @@ const seedDatabase = async () => {
     await Vehicle.deleteMany({});
     console.log('Cleared existing vehicles');
 
-    await User.deleteMany({});
-    console.log('Cleared existing users');
+   
 
     // Insert dummy vehicles
     const insertedVehicles = await Vehicle.insertMany(dummyVehicles);
     console.log(`✅ Added ${insertedVehicles.length} vehicles to inventory`);
 
-    // Insert dummy users
-    const insertedUsers = await User.insertMany(dummyUsers);
-    console.log(`✅ Added ${insertedUsers.length} users for testing`);
+  
 
     console.log('\n📊 Summary:');
     console.log(`   - ${insertedVehicles.length} vehicles added`);
-    console.log(`   - ${insertedUsers.length} users added`);
-    console.log('\n🔑 Test Credentials:');
-    console.log('   Admin: admin@apexmotors.com / admin123');
-    console.log('   User: user@apexmotors.com / user123');
+    
 
     process.exit(0);
   } catch (error) {
