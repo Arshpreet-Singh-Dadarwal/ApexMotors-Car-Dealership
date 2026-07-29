@@ -203,11 +203,6 @@ cd frontend
 npm test
 ```
 
-Coverage
-
-```bash
-npm run test:report
-```
 
 ---
 
