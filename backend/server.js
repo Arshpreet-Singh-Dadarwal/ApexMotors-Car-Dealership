@@ -8,9 +8,11 @@ import { errorHandler, notFound } from './src/middleware/errorHandler.js';
 
 dotenv.config();
 
-// Connect to MongoDB
-connectDB();
 
+// Connect to MongoDB (skip for tests)
+if (process.env.NODE_ENV !== 'test') {
+  await connectDB();
+}
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -29,24 +31,7 @@ app.get('/api/health', (req, res) => {
     status: 'OK', 
     message: 'Server is running',
     timestamp: new Date().toISOString(),
-    endpoints: {
-      auth: {
-        register: 'POST /api/auth/register',
-        login: 'POST /api/auth/login'
-      },
-      vehicles: {
-        list: 'GET /api/vehicles',
-        search: 'GET /api/vehicles/search',
-        get: 'GET /api/vehicles/:id',
-        create: 'POST /api/vehicles (Admin)',
-        update: 'PUT /api/vehicles/:id (Admin)',
-        delete: 'DELETE /api/vehicles/:id (Admin)',
-        purchase: 'POST /api/vehicles/:id/purchase',
-        restock: 'POST /api/vehicles/:id/restock (Admin)',
-        byCategory: 'GET /api/vehicles/category/:category',
-        stats: 'GET /api/vehicles/stats/summary (Admin)'
-      }
-    }
+  
   });
 });
 
@@ -54,8 +39,10 @@ app.get('/api/health', (req, res) => {
 app.use(notFound);
 app.use(errorHandler);
 
-app.listen(PORT, () => {
-  console.log(` Server running on port ${PORT}`);
-  console.log(` API Base URL: http://localhost:${PORT}/api`);
- 
-});
+if (process.env.NODE_ENV !== 'test') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(` Server running on port ${PORT}`);
+  });
+}
+export default app;
