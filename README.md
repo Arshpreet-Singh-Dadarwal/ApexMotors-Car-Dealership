@@ -14,21 +14,20 @@ The application provides a complete dealership management solution with secure a
 
 # 📸 Screenshots
 
-## Customer Dashboard
-
-![Customer Dashboard](https://res.cloudinary.com/dtz0urit6/image/upload/q_auto:best,f_jpg/cloudinary-tools-uploads/euyohvmucqvshol44jdr)
-
 ## Admin Dashboard
+<img width="950" height="430" alt="Screenshot 2026-07-29 235438" src="https://github.com/user-attachments/assets/3027a80c-2cb8-4450-b5bf-7c682200ca3c" />
 
-![Admin Dashboard](https://res.cloudinary.com/dtz0urit6/image/upload/q_auto:best,f_jpg/cloudinary-tools-uploads/oxxcjeeffsahcpjkltks)
+## Customer Dashboard
+<img width="944" height="439" alt="Screenshot 2026-07-29 234803" src="https://github.com/user-attachments/assets/d3de10d6-432a-40c6-9110-5eaa764ea3bb" />
 
 ## Vehicle Purchase
+<img width="365" height="383" alt="Screenshot 2026-07-29 235232" src="https://github.com/user-attachments/assets/080a4c36-ddf1-45d9-acae-16ceb74946df" />
 
-![Purchase Modal](https://res.cloudinary.com/dtz0urit6/image/upload/q_auto:best,f_jpg/cloudinary-tools-uploads/uyxzsucnux6d10opa6ul)
 
 ## Restock Vehicle
 
-![Restock Modal](https://res.cloudinary.com/dtz0urit6/image/upload/q_auto:best,f_jpg/cloudinary-tools-uploads/jezdf9ybjkw8ldyuzape)
+<img width="364" height="418" alt="Screenshot 2026-07-29 235326" src="https://github.com/user-attachments/assets/acd47e18-688b-4541-9da5-d7e9653c984b" />
+
 
 ---
 
